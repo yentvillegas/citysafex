@@ -83,6 +83,7 @@ app.patch("/api/alerta/:id", validateToken, async (req, res) => {
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
+  console.log("data login", req.body)
   const usuario = await Usuario.findOne({ email, password })
   if (usuario) {
     const token = jwt.sign(
