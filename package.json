@@ -16,17 +16,17 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "leaflet": "^1.9.4",
-    "leaflet.heat": "^0.2.0",
-    "mongoose": "^8.19.2",
-    "nodemon": "^3.1.10",
+    "jsonwebtoken": "^9.0.2",   
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {    
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-leaflet": "^5.0.0",
-    "react-router-dom": "^7.9.5"
-  },
-  "devDependencies": {
+    "react-router-dom": "^7.9.5",
+    "nodemon": "^3.1.10",
+    "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "@eslint/js": "^9.36.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
