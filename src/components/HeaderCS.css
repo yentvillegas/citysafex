@@ -1,0 +1,11 @@
+.HeaderCS {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+}
+.HeaderCS_actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+}
