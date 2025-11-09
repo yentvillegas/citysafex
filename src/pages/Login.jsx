@@ -28,7 +28,7 @@ function Login({setHasJWT}) {
                 }
             },200)           
         } catch (error) {            
-            alert(error.response.data.error + " " + JSON.stringify(formData))
+            alert(error.response.data.error)
         }
     }
     return (
