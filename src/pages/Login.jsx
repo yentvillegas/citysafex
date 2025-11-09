@@ -27,9 +27,8 @@ function Login({setHasJWT}) {
                     navigate("/ciudadano")
                 }
             },200)           
-        } catch (error) {
-            console.log(error)
-            alert(error.response.data.error)
+        } catch (error) {            
+            alert(error.response.data.error, JSON.stringify(formData))
         }
     }
     return (
