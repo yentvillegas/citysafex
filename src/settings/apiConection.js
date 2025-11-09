@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiCS = axios.create({
-    baseURL:"https://citysafex.onrender.com//api",
+    baseURL:"https://citysafex.onrender.com/api",
     headers: {
         "Content-Type": "application/json",
     },
