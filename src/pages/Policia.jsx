@@ -26,21 +26,23 @@ function Policia() {
         setSeleccionado(id);
     };
     function getData() {
-         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                setPos([position.coords.latitude, position.coords.longitude])
-                setPosFinded(true)
-            }
-        )
+       
       
         apiCS.get("/alerta",{
            headers: {
             "Authorization": `Bearer ${localStorage.getItem("jwt")}` 
         }}).then(resp=>{
-            const points = resp.data.data.map(a=>{
-                return  { id: a._id, nombre: a.userId.name, lat: a.lat, lng: a.lng }
-            })
-            setOldPoints(points)
+            navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const points = resp.data.data.map(a=>{
+                    return  { id: a._id, nombre: a.userId.name, lat: a.lat, lng: a.lng }
+                })
+                setOldPoints(points)
+                setPos([position.coords.latitude, position.coords.longitude])
+                setPosFinded(true)
+            }
+        )
+          
         })
     }
     useEffect(()=>{

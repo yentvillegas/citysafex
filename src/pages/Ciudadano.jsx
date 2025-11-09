@@ -22,27 +22,28 @@ function Ciudadano() {
             alert("CASO REPORTADO, SE AVISARÁ A LOS POLICIAS")
         })
     }
-    useEffect(()=>{
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                setPos([position.coords.latitude, position.coords.longitude])
-                setPosFinded(true)
-            }
-        )
+    useEffect(()=>{        
         apiCS.get("/alerta",{
              headers: {               
                 "Authorization": `Bearer ${localStorage.getItem("jwt")}` 
             },
         }).then(resp=>{
-            const points = resp.data.data.map(a=>{
-                return [a.lat, a.lng, 0.5]
-            })
-            setOldPoints(points)
+            navigator.geolocation.getCurrentPosition(
+            (position) => {
+                 const points = resp.data.data.map(a=>{
+                    return [a.lat, a.lng, 0.5]
+                })
+                setOldPoints(points)
+                setPos([position.coords.latitude, position.coords.longitude])
+                setPosFinded(true)
+            }
+        )
+           
         })
     },[])   
     return <PageCS style={{height:"100%"}}>
         <div style={{height:"100%", width:"100%"}}>
-            {posFinded?<Mapa currPoint={pos} oldPoints={oldPoints}/>:<div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"100%"}}>SE NECESITA ACCESO A LA UBICACION</div>}
+            {posFinded?<Mapa currPoint={pos} oldPoints={oldPoints}/>:<div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"100%"}}>CARGANDO MAPA...</div>}
         </div>
         <div style={{width:"100%", display:"flex", justifyContent:"space-between", padding:"1rem"}}>
             <ButtonCS text="Reportar Caso" bg="red" onClick={()=>navigate("/ciudadano/caso")}/>
